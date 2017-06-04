@@ -52,6 +52,12 @@
     messagingSenderId: "354757121207"
   };
   firebase.initializeApp(config);
+	var ref = new Firebase("https://newcomer-2bfb0.firebaseio.com");
+	var authData = ref.getAuth();
+	ref.unauth();
+
+
+
 </script>
 	<!-- <script text='text/javascript' src='js/jquery-3.1.1.min.js'></script> -->
 	<script type='text/javascript' src='js/main.js'></script>

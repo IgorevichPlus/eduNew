@@ -1,92 +1,30 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Late Pass</title>
-		<link href="https://fonts.googleapis.com/css?family=Palanquin+Dark|Poppins" rel="stylesheet">
-		<link rel="stylesheet" href="css/dashboard.css" />
-		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="css/materialize.min.css">
+<a class = "white-text name" id ="user_name"><span class="white-text name"></span></a>
+<script> firebase.auth().currentUser; </script>
+<a class = "white-text email" id = "user_email"></a>
+<a href="javascript:firebase.auth().signOut();" id="signout" class="navlink ">
+	Sign Out of
+</a>
 
-		<!-- Compiled and minified JavaScript -->
-
-
-		<link rel="stylesheet" href="css/custom.css">
-
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-		   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	</head>
-	<body>
-
-	<div id="navbar">
-		<ul class="side-nav fixed left">
-		 <li><div class="userView">
-			 <div class="background">
-				 <img src="http://2.bp.blogspot.com/-TEqaDUIWxcM/UIg0c0iDpaI/AAAAAAAAA3g/Mu6Bp18eYGw/s1600/gradient.jpg">
-			 </div>
-			 <a href="#!user"><img class="circle" src="https://commencement.wustl.edu/wp-content/uploads/2014/01/FarrellDavidC.jpg"></a>
-			 <a class = "white-text name" id ="user_name"><span class="white-text name"></span></a>
-			 <a class = "white-text email" id = "user_email"></a>
-
-		 </div></li>
-		 <li class = "active"><a>Dashboard</a></li>
-		 <li><a href="#!">Pass Requests</a></li>
-		 <li><a href="#!">Notifications<span class="new badge blue" data-badge-caption="New">4</span></a></li>
-		 <li><a href="#!">History</a></li>
-		 <li><div class="divider"></div></li>
-		 <li><a class="subheader">Acount Settings</a></li>
-		 <li><a class="waves-effect" href="#!">Acount Info</a></li>
-
-		 <li>
-			 <a href="javascript:firebase.auth().signOut();" id="signout" class="navlink ">
-				 Sign Out of
-			 </a>
-
-			</li>
-	 </ul>
- 	</div>
-	<div class = "dashboard">
-
-
-
-	 <div class = "container">
-		<div id="placeholder"></div>
-		<div id="dashboard-container" class="main-container">
-
-		  <div  id = "request-container" class="row">
-
-		  </div>
-
-  <div class="row">
-      <div class="card">
-        <div class="card-image blue">
-          <span class="card-title">Card Title</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light blue lighten-2"><i class="material-icons">done</i></a>
-        </div>
-        <div class="card-content" id = "notification-container">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-  </div>
-	<div id = "history-container">
-		
-	</div>
-
-		</div>
 	</body>
-	<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
-	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyAoMj5MuNNgDX-pjnapiUenVPUrzBF_7no",
-	    authDomain: "late-pass.firebaseapp.com",
-	    databaseURL: "https://late-pass.firebaseio.com",
-	    projectId: "late-pass",
-	    storageBucket: "late-pass.appspot.com",
-	    messagingSenderId: "911150508329"
-	  };
-	  firebase.initializeApp(config);
-	</script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCrpgWXWG8ffAqaPZnK-RPq-k9znEBim6k",
+    authDomain: "newcomer-2bfb0.firebaseapp.com",
+    databaseURL: "https://newcomer-2bfb0.firebaseio.com",
+    projectId: "newcomer-2bfb0",
+    storageBucket: "newcomer-2bfb0.appspot.com",
+    messagingSenderId: "354757121207"
+  };
+  firebase.initializeApp(config);
+	var ref = new Firebase("https://newcomer-2bfb0.firebaseio.com");
+	var authData = ref.getAuth();
+	ref.unauth();
+
+
+
+</script>
 	<script type='text/javascript' src='js/jquery-3.1.1.min.js'></script>
 	<script src="js/materialize.min.js"></script>
 
