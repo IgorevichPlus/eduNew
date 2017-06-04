@@ -26,6 +26,20 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (e.keyCode == 13) logIn();
 	}
 })
+
+
+
+var register = function() {
+	let username = document.getElementById("username"), password = document.getElementById("password");
+	firebase.auth().createUserWithEmailAndPassword(username.value, password.value)
+	 .catch(function (err) {
+	   // Handle errors
+	 });
+
+	 
+	
+}
+
 var logIn = function() {
 	// alert("f");
 	let username = document.getElementById("username"), password = document.getElementById("password");
@@ -53,4 +67,5 @@ var logIn = function() {
 		}
 		document.getElementById("error").innerHTML = content;
 	});
+	
 }

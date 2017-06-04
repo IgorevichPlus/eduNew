@@ -1,0 +1,52 @@
+<div id="registerForm">
+    <input type="text" id="userEmail" placeholder="Email"> 
+    <input type="password" id="userPass" placeholder="Password"> 
+    <button type="button" id="register">Register</button> 
+</div>
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCrpgWXWG8ffAqaPZnK-RPq-k9znEBim6k",
+    authDomain: "newcomer-2bfb0.firebaseapp.com",
+    databaseURL: "https://newcomer-2bfb0.firebaseio.com",
+    projectId: "newcomer-2bfb0",
+    storageBucket: "newcomer-2bfb0.appspot.com",
+    messagingSenderId: "354757121207"
+  };
+  firebase.initializeApp(config);
+
+
+</script>
+<script>
+    $('#register').click(function() {
+
+        var email = $('#userEmail');    
+        var pass = $('#userPass');      
+
+        if(email.val() && pass.val()){
+            // this is where I stop knowing how all this firebase stuff works
+
+
+            firebase.auth().createUserWithEmailAndPassword(email.val(), pass.val()).catch(function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode + ' - ' + errorMessage);
+            });
+            
+
+            // This is where it doesn't wanna work. Please check the first paragraph below 
+            // for the explanation of how it doesn't work.
+            console.log('this message shouldn\'t show if there wasn\'t an error.'); //This fires before firebase.auth()... for some reason
+            if(error) {
+                console.log('there was an error');
+            } else {
+                console.log('everything went fine');
+            }                 
+        } else {
+            console.log('fill in both fields');
+        }  
+        
+    });
+</script>

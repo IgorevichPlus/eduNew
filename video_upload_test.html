@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Upload Videos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+</head>
+<body>
+	
+        <input type="file" id="fileButton">
+
+
+
+
+</body>
+	<!-- Firebase initialization -->
+	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCrpgWXWG8ffAqaPZnK-RPq-k9znEBim6k",
+    authDomain: "newcomer-2bfb0.firebaseapp.com",
+    databaseURL: "https://newcomer-2bfb0.firebaseio.com",
+    projectId: "newcomer-2bfb0",
+    storageBucket: "newcomer-2bfb0.appspot.com",
+    messagingSenderId: "354757121207"
+  };
+  firebase.initializeApp(config);
+	var fileButton = document.getElementById("fileButton");
+	fileButton.addEventListener("change", function(e){
+		var file = e.target.files[0];
+		var storageRef = firebase.storage().ref("videos/" +firebase.auth().currentUser.email+"/"+ file.name);
+		storageRef.put(file);
+	});
+	</script>
+</html>
+
+
+<script>
+  // Initialize Firebase
+
+
+
+
+</script>

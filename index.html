@@ -5,10 +5,8 @@
 		<link href="https://fonts.googleapis.com/css?family=Palanquin+Dark|Poppins" rel="stylesheet">
 		<link rel="stylesheet" href="css/custom.css" />
 		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="css/materialize.min.css">
-
-		<!-- Compiled and minified JavaScript -->
-		<script src="js/materialize.min.js"></script>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 
 		<script src="js/init.js"></script>
 
@@ -20,8 +18,24 @@
 	<body>
 
 		<script>
+        
 			$('#yourElement').addClass('animated bounceOutLeft');
 		</script>
+		
+	<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+  </ul>
 		<div class = "front-page ">
 			<div class = "container ">
 				<div class = "login-container" id="placeholder">
@@ -33,7 +47,7 @@
 							<input type="password" placeholder="Password" class="login animated fadeIn" style = "animation-delay: .9s;" id="password">
 							<span id="error"></span>
 							<input  class = "btn-large z-depth-0 animated fadeIn"  style = "animation-delay: 1.1s;"type="submit" value="Log In" id="login-submit" onclick="logIn()">
-							<input class = "btn-large z-depth-0 animated fadeIn" style = "animation-delay: 1.1s;" type="submit" value="Sign Up" id="signup-submit">
+							<input class = "btn-large z-depth-0 animated fadeIn" style = "animation-delay: 1.1s;" type="submit" value="Sign Up" id="Sign-submit" onclick="register()">
 						</div>
 						</div>
 					</div>
@@ -52,9 +66,7 @@
     messagingSenderId: "354757121207"
   };
   firebase.initializeApp(config);
-	var ref = new Firebase("https://newcomer-2bfb0.firebaseio.com");
-	var authData = ref.getAuth();
-	ref.unauth();
+	
 
 
 
