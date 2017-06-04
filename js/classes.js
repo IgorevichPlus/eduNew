@@ -7,24 +7,32 @@ firebase.auth().onAuthStateChanged(function(user) {
 		});
 		
 		firebase.database().ref("classes/").once("value").then(function(dc) {
+		  div = document.getElementById("all_classes");
+		  var window.columns = 0;
+		  var window.row = 0;
+		  console.log(dc.val())
 			dc.val().forEach(function(x){
-			  console.log(x);
-			});
-			firebase.database().ref("classes/" + dc.val() + "/title").once("value").then(function(dt){
-				document.getElementById("class-title").innerHTML += " " + dt.val();
-				
-			});
-			
-			firebase.database().ref("classes/" + dc.val() + "/teacher").once("value").then(function(dts){
-				firebase.database().ref("users/" + toFirebaseFormat(dts.val()) + "/username").once("value").then(function(dn) {
-					document.getElementById("class-teacher").innerHTML += " " + dn.val();
-				});
-				
-			});
-			
-			firebase.database().ref("classes/" + dc.val() + "/description").once("value").then(function(dd){
-				document.getElementById("class-description").innerHTML += " " + dd.val();
-				
+			  if(columns = 0){
+			    div.innerHTML += '\
+			    <div class="row" id ="row'+ window.row +'">\
+			      <div class="col s2">\
+			        <div class="card pink">\
+			          <div class="card-content white-text">\
+			            <span class="card-title>' + x.title +'</span>\
+			          </div>\
+			        </div>\
+			      </div> \
+			    '
+			  } else {
+			    
+			  }
+			  
+			  if(columns <7){
+			   columns++;
+			  } else {
+			    row++;
+			    columns = 0;
+			  }
 			});
 		});
 		
