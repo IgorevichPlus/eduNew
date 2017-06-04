@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>eduNew</title>
+		<link href="https://fonts.googleapis.com/css?family=Palanquin+Dark|Poppins" rel="stylesheet">
+		<link rel="stylesheet" href="css/custom.css" />
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="css/materialize.min.css">
+
+		<!-- Compiled and minified JavaScript -->
+		<script src="js/materialize.min.js"></script>
+
+		<script src="js/init.js"></script>
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	</head>
+	<body>
+
+		<script>
+			$('#yourElement').addClass('animated bounceOutLeft');
+		</script>
+		<div class = "front-page ">
+			<div class = "container ">
+				<div class = "login-container" id="placeholder">
+					<div id="login-container" class="main-container">
+						<div id="main">
+							<h1 class = "title animated fadeIn">edu<span style = "font-weight: 600;">News</span></h1>
+							<!--<img id="main-logo" class="interaction" src="img/logo.png" /><br> -->
+							<input type="text" placeholder="Email" class="login animated fadeIn" style = "animation-delay: .7s;"id="username"><br>
+							<input type="password" placeholder="Password" class="login animated fadeIn" style = "animation-delay: .9s;" id="password">
+							<span id="error"></span>
+							<input  class = "btn-large z-depth-0 animated fadeIn"  style = "animation-delay: 1.1s;"type="submit" value="Log In" id="login-submit" onclick="logIn()">
+							<input class = "btn-large z-depth-0 animated fadeIn" style = "animation-delay: 1.1s;" type="submit" value="Sign Up" id="signup-submit">
+						</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</body>
+	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCrpgWXWG8ffAqaPZnK-RPq-k9znEBim6k",
+    authDomain: "newcomer-2bfb0.firebaseapp.com",
+    databaseURL: "https://newcomer-2bfb0.firebaseio.com",
+    projectId: "newcomer-2bfb0",
+    storageBucket: "newcomer-2bfb0.appspot.com",
+    messagingSenderId: "354757121207"
+  };
+  firebase.initializeApp(config);
+</script>
+	<!-- <script text='text/javascript' src='js/jquery-3.1.1.min.js'></script> -->
+	<script type='text/javascript' src='js/main.js'></script>
+	<script type='text/javascript' src='js/index.js'></script>
+</html>
