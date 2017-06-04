@@ -1,23 +1,65 @@
 <html>
 <head>
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-</head>
-<body>
-<a class = "white-text name" id ="user_name"><span class="white-text name"></span></a>
-<script> firebase.auth().currentUser; 
+		<title>eduNew</title>
+		<link href="https://fonts.googleapis.com/css?family=Palanquin+Dark|Poppins" rel="stylesheet">
+		<link rel="stylesheet" href="css/dashboard.css" />
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="css/materialize.min.css">
 
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-        </script>
-<a class = "white-text email" id = "user_email"></a>
-<a href="javascript:firebase.auth().signOut();" id="signout" class="navlink ">
-	Sign Out of
-</a>
+		<!-- Compiled and minified JavaScript -->
 
 
-<a href ="classes.html">Manage your classes</a>
+		<link rel="stylesheet" href="css/custom.css">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+	<body>
+
+	<div id="navbar">
+		<ul class="side-nav fixed left">
+		 <li><div class="userView">
+			 <div class="background">
+				 <img src="https://www.xmple.com/wallpaper/pink-gradient-linear-blue-1920x1080-c2-afeeee-ff69b4-a-300-f-14.svg">
+			 </div>
+			 <a href="#!user"><img class="circle" src="http://www.nssi.com/media/wysiwyg/images/2.jpg"></a>
+			 <a class = "white-text name" id ="user_name"><span class="white-text name"></span></a>
+			 <a class = "white-text email" id = "user_email"></a>
+
+		 </div></li>
+		 <li class = "active"><a>Dashboard</a></li>
+		 <li><a href="#!">Classes</a></li>
+		 <li><a href="#!">Notifications<span class="new badge pink lighten-2" data-badge-caption="New">4</span></a></li>
+		 <li><a href="#!">Teachers</a></li>
+		 <li><div class="divider"></div></li>
+		 <li><a class="subheader">Acount Settings</a></li>
+		 <li><a class="waves-effect" href="#!">Acount Info</a></li>
+
+		 <li>
+			 <a href="javascript:firebase.auth().signOut();" id="signout" class="navlink ">
+				 Sign Out of
+			 </a>
+
+			</li>
+	 </ul>
+ 	</div>
+ 	
+	<div class = "dashboard">
+		<div class = "container">
+				<a href ="classes.html">Manage your classes</a>
+			
+		</div>
+
+
+
+	</div>
+	
+	
+	
+	
+	
+	
 	</body>
 	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
 <script>
@@ -31,9 +73,6 @@
     messagingSenderId: "354757121207"
   };
   firebase.initializeApp(config);
-	var ref = new Firebase("https://newcomer-2bfb0.firebaseio.com");
-	var authData = ref.getAuth();
-	ref.unauth();
 
 
 
@@ -51,12 +90,10 @@
 	}
 	);
 	
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-        
 	</script>
 	<script type='text/javascript' src='js/main.js'></script>
 	<script type='text/javascript' src='js/dashboard.js'></script>
+	
+
 
 </html>
