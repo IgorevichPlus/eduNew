@@ -1,0 +1,34 @@
+.brand-logo {
+  left: 50px;
+  top: -17.5px;
+  max-height: 100px;
+}
+
+.info {
+  padding-top: 50px;
+}
+
+
+#index-banner {
+  padding-top: 40px;
+  height: 80vh;
+  width: 100%;
+}
+
+.links {
+  padding-right: 100px;
+}
+
+.us {
+  margin-top: 15px;
+  margin-legt: 20px;
+
+}
+
+.btn-clear {
+  padding-left: 30px;
+}
+
+.block-1  {
+  padding-left: 450px;
+}
