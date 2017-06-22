@@ -33,27 +33,24 @@ firebase.auth().onAuthStateChanged(function(user) {
 		});
 
 		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/classes" +"/registered").once("value").then(function(rg) {
-
 			rg.val().forEach(function(x){
-				var users = "fake";
-				var dess = "fake";
-				var title = "fake";
-
-			  firebase.database().ref("classes/" + x + "/teacher").once("value").then(function(nmd){
+				var users;
+				var dess;
+				var title;
+				//goes through the databse of classes and teachers, then calls the print function
+				firebase.database().ref("classes/" + x + "/teacher").once("value").then(function(nmd){
 					firebase.database().ref("users/" + toFirebaseFormat(nmd.val() ) + "/username").once("value").then(function(udd){
-						users = udd.val();
+							users = udd.val();
+						firebase.database().ref("classes/" + x + "/description").once("value").then(function(dd){
+								dess = dd.val();
+								firebase.database().ref("classes/" + x + "/title").once("value").then(function(tt){
+										title = tt.val();
+										printClass(title, dess, users);
+								});
+							});
+						});
 					});
 				});
-				firebase.database().ref("classes/" + x + "/description").once("value").then(function(dd){
-						dess = dd.val();
-				});
-				firebase.database().ref("classes/" + x + "/title").once("value").then(function(tt){
-						title = tt.val();
-				});
-			addTo(title, dess, users);
-			});
-
-
 		});
 
 		document.getElementById("user_email").innerHTML += " " + firebase.auth().currentUser.email;
@@ -62,6 +59,24 @@ firebase.auth().onAuthStateChanged(function(user) {
 	} else window.location.replace("index.html");
 
 });
-var addTo = function(title, description, teacher){
-	document.getElementById("classlist").innerHTML += " "  + title + " "  + description + " " + teacher;
+
+//function that prints
+var printClass = function(title, description, teacher){
+	document.getElementById("classlist").innerHTML += title;
+	document.getElementById("classlist").innerHTML += "<div class=\"col s12 m7 blue white-text\">";
+	document.getElementById("classlist").innerHTML += "<h2 class=\"header blue white-text\">" + title + "</h2>";
+	document.getElementById("classlist").innerHTML += "<div class=\"card horizontal \">";
+	document.getElementById("classlist").innerHTML += "<div class=\"card-stacked\">";
+	document.getElementById("classlist").innerHTML += "<div class=\"card-content \">";
+	document.getElementById("classlist").innerHTML += "<p>" + description + "</p>";
+	document.getElementById("classlist").innerHTML += "</div>";
+	document.getElementById("classlist").innerHTML += "<div class=\"card-action\">";
+	document.getElementById("classlist").innerHTML += "<a href=\"#\">This is a link</a>";
+	document.getElementById("classlist").innerHTML += "</div>";
+	document.getElementById("classlist").innerHTML += "</div>";
+	document.getElementById("classlist").innerHTML += "</div>";
+	document.getElementById("classlist").innerHTML += "</div>";
+
+
+
 }
