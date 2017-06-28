@@ -12,27 +12,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 		});
 
 
-		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/classes" +"/registered").once("value").then(function(dc) {
-
-			firebase.database().ref("classes/" + dc.val() + "/title").once("value").then(function(dt){
-				document.getElementById("class-title").innerHTML += " " + dt.val();
-
-			});
-
-			firebase.database().ref("classes/" + dc.val() + "/teacher").once("value").then(function(dts){
-				firebase.database().ref("users/" + toFirebaseFormat(dts.val()) + "/username").once("value").then(function(dn) {
-					document.getElementById("class-teacher").innerHTML += " " + dn.val();
-				});
-
-			});
-
-			firebase.database().ref("classes/" + dc.val() + "/description").once("value").then(function(dd){
-				document.getElementById("class-description").innerHTML += " " + dd.val();
-
-			});
-		});
-
 		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/classes" +"/registered").once("value").then(function(rg) {
+
 			rg.val().forEach(function(x){
 				var users;
 				var dess;
@@ -46,12 +27,38 @@ firebase.auth().onAuthStateChanged(function(user) {
 								firebase.database().ref("classes/" + x + "/title").once("value").then(function(tt){
 										title = tt.val();
 										printClass(title, dess, users);
+
+
 								});
 							});
 						});
 					});
 				});
 		});
+
+		//teachers
+		firebase.database().ref("users/").once("value").then(function(uc){
+			k = uc.val();
+			console.log(uc.val());
+			for(let key in k){
+				if(k[key].status == "teacher"){
+					printTeacher(k[key].username, k[key].email);
+				}
+
+			}
+		});
+
+		//All classes
+		firebase.database().ref("classes/").once("value").then(function(nm){
+			nm.val().forEach(function(x){
+				firebase.database().ref("classes/" + x).once("value").then(function(nn){
+					console.log(nn.val());
+				});
+			});
+		});
+
+
+
 
 		document.getElementById("user_email").innerHTML += " " + firebase.auth().currentUser.email;
 
@@ -60,23 +67,23 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 });
 
-//function that prints
+//function that prints the classes
 var printClass = function(title, description, teacher){
 	document.getElementById("classlist").innerHTML += title;
-	document.getElementById("classlist").innerHTML += "<div class=\"col s12 m7 blue white-text\">";
-	document.getElementById("classlist").innerHTML += "<h2 class=\"header blue white-text\">" + title + "</h2>";
-	document.getElementById("classlist").innerHTML += "<div class=\"card horizontal \">";
-	document.getElementById("classlist").innerHTML += "<div class=\"card-stacked\">";
-	document.getElementById("classlist").innerHTML += "<div class=\"card-content \">";
-	document.getElementById("classlist").innerHTML += "<p>" + description + "</p>";
-	document.getElementById("classlist").innerHTML += "</div>";
-	document.getElementById("classlist").innerHTML += "<div class=\"card-action\">";
-	document.getElementById("classlist").innerHTML += "<a href=\"#\">This is a link</a>";
-	document.getElementById("classlist").innerHTML += "</div>";
-	document.getElementById("classlist").innerHTML += "</div>";
-	document.getElementById("classlist").innerHTML += "</div>";
-	document.getElementById("classlist").innerHTML += "</div>";
+	document.getElementById("classlist").innerHTML += teacher;
+	document.getElementById("classlist").innerHTML += description;
 
+}
+//function that prints the teachers
+var printTeacher = function(Name, Email){
+	document.getElementById("teacherlist").innerHTML += Name;
+	document.getElementById("teacherlist").innerHTML += Email;
 
+}
+//prints all of the classes
+var printAllClasses = function(title, description, teacher){
+	document.getElementById("classlist").innerHTML += title;
+	document.getElementById("classlist").innerHTML += teacher;
+	document.getElementById("classlist").innerHTML += description;
 
 }

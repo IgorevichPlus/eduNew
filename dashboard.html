@@ -14,38 +14,41 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 		   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			 <script src = "app\lib\angular.min.js"></script>
+
 	</head>
 	<body>
 
-	<div id="navbar">
-		<ul class="side-nav fixed left">
-		 <li><div class="userView">
-			 <div class="background">
-				 <img src="https://www.xmple.com/wallpaper/pink-gradient-linear-blue-1920x1080-c2-afeeee-ff69b4-a-300-f-14.svg">
-			 </div>
-			 <a href="#!user"><img class="circle" src="http://www.nssi.com/media/wysiwyg/images/2.jpg"></a>
-			 <a class = "white-text name" id ="user_name"><span class="white-text name"></span></a>
-			 <a class = "white-text email" id = "user_email"></a>
+		<div id="navbar" >
+			<ul class="side-nav fixed left indigo darken-3 white-text">
+			 <li><div class="userView white-text">
+				 <div class="background indigo darken-4">
 
-		 </div></li>
-		 <li class = "active"><a>Dashboard</a></li>
-		 <li><a href="classes.html">Classes</a></li>
-		 <li><a href="#!">Notifications<span class="new badge pink lighten-2" data-badge-caption="New">4</span></a></li>
-		 <li><a href="#!">Teachers</a></li>
-		 <li><div class="divider"></div></li>
-		 <li><a class="subheader">Acount Settings</a></li>
-		 <li><a class="waves-effect" href="#!">Acount Info</a></li>
+				 </div>
+				 <a href="#!user"><img class="circle" src="http://www.nssi.com/media/wysiwyg/images/2.jpg"></a>
+				 <a class = "white-text name" id ="user_name"><span class="white-text name"></span></a>
+				 <a class = "white-text email" id = "user_email"></a>
 
-		 <li>
-			 <a href="javascript:firebase.auth().signOut();" id="signout" class="navlink ">
-				 Sign Out of
-			 </a>
+			 </div></li>
+			 <li class = "active" ><a class = "white-text" href = "dashboard.html">Dashboard</a></li>
+			 <li><a class = "white-text" href="classes.html">Classes</a></li>
+			 <li><a class = "white-text" href="#!">Notifications<span class="new badge cyan accent-4" data-badge-caption="New">4</span></a></li>
+			 <li><a class = "white-text" href="#!">Teachers</a></li>
+			 <li><div class="divider"></div></li>
+			 <li><a  class = "white-text" class="subheader" >Acount Settings</a></li>
+			 <li><a class="waves-effect white-text" href="profile.html">Acount Info</a></li>
 
-			</li>
-	 </ul>
- 	</div>
+			 <li>
+				 <a href="javascript:firebase.auth().signOut();" id="signout" class="navlink white-text ">
+					 Sign Out of
+				 </a>
 
-	<div class = "dashboard">
+				</li>
+		 </ul>
+	 	</div>
+
+
+	<div class = "classes">
 		<div class = "container">
 				<div class = "classes blue-text" id = "classlist">
 					  <div class="row">
@@ -53,11 +56,16 @@
 					  </div>
 
 				</div>
-
 		</div>
+	</div>
 
-
-
+	<div class = "teachers">
+		<div class = "container">
+			<div class = "teachers blue-text" id = "teacherlist">
+					<div class = "row">
+					</div>
+			</div>
+		</div>
 	</div>
 
 

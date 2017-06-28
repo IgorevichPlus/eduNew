@@ -1,0 +1,166 @@
+<html>
+<head>
+		<title>eduNew</title>
+		<link href="https://fonts.googleapis.com/css?family=Palanquin+Dark|Poppins" rel="stylesheet">
+		<link rel="stylesheet" href="css/dashboard.css" />
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="css/materialize.min.css">
+
+		<!-- Compiled and minified JavaScript -->
+
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			 <script src = "app\lib\angular.min.js"></script>
+
+	</head>
+	<body>
+
+	<div id="navbar" >
+		<ul class="side-nav fixed left indigo darken-3 white-text">
+		 <li><div class="userView white-text">
+			 <div class="background indigo darken-4">
+
+			 </div>
+			 <a href="#!user"><img class="circle" src="https://media.creativemornings.com/uploads/user/avatar/89900/Profile_picture_square.jpg"></a>
+			 <a class = "white-text name" id ="user_name"><span class="white-text name"></span></a>
+			 <a class = "white-text email" id = "user_email"></a>
+
+		 </div></li>
+		 <li ><a class = "white-text" href = "dashboard.html">Dashboard</a></li>
+		 <li><a class = "white-text" href="classes.html">Classes</a></li>
+		 <li><a class = "white-text" href="#!">Notifications<span class="new badge cyan accent-4" data-badge-caption="New">4</span></a></li>
+		 <li><a class = "white-text" href="#!">Teachers</a></li>
+		 <li><div class="divider"></div></li>
+		 <li><a  class = "white-text" class="subheader" >Acount Settings</a></li>
+		 <li class = "active"><a class="waves-effect white-text" href="#!">Acount Info</a></li>
+
+		 <li>
+			 <a href="javascript:firebase.auth().signOut();" id="signout" class="navlink white-text ">
+				 Sign Out of
+			 </a>
+
+			</li>
+	 </ul>
+ 	</div>
+
+
+  <div class="container">
+    <div class = "container">
+    <div class = "container" style = "text-align: center">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title white-text" id = "profile_username"></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img style = "height: 300px; width: 300px; border-radius: 500px; " alt="User Pic" src="https://media.creativemornings.com/uploads/user/avatar/89900/Profile_picture_square.jpg"> </div>
+
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody class = "white-text" style = "text-align: center">
+
+                      <tr>
+                        <td>Date Joined:</td>
+                        <td><input  id = "profile_dJoined" type="text" ></input></td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td ><input  id = "profile_dBirth" type="text" ></input></td>
+                      </tr>
+
+                         <tr>
+                             <tr>
+                        <td>Gender</td>
+                        <td><input  id = "profile_gender" type="text" ></input></td>
+
+                      <tr>
+                        <td>Email</td>
+                        <td><input  id = "profile_email" type="text" ></input></td>
+                      </tr>
+                        <td>Phone Number</td>
+                        <td><input  id = "profile_pNumber" type="text" ></input></td>
+                        </td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                  <br>
+                  <input class = "btn btn-primary z-depth-0 cyan accent-4" type="submit" value="Submit" id="info-submit" onclick="pushInfo()">
+									<a href="#" class="btn btn-primary cyan accent-4">Log Out</a>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+
+	</body>
+	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCrpgWXWG8ffAqaPZnK-RPq-k9znEBim6k",
+    authDomain: "newcomer-2bfb0.firebaseapp.com",
+    databaseURL: "https://newcomer-2bfb0.firebaseio.com",
+    projectId: "newcomer-2bfb0",
+    storageBucket: "newcomer-2bfb0.appspot.com",
+    messagingSenderId: "354757121207"
+  };
+  firebase.initializeApp(config);
+
+
+
+</script>
+	<script type='text/javascript' src='js/jquery-3.1.1.min.js'></script>
+	<script src="js/materialize.min.js"></script>
+
+		<script src="js/init.js"></script>
+		<script>
+		$('.button-collapse').sideNav({
+		menuWidth: 300, // Default is 300
+		edge: 'right', // Choose the horizontal origin
+		closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+		draggable: true // Choose whether you can drag to open on touch screens
+	}
+	);
+
+	</script>
+	<script type='text/javascript' src='js/main.js'></script>
+	<script type='text/javascript' src='js/profile.js'></script>
+
+
+
+</html>

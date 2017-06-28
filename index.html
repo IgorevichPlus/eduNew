@@ -6,9 +6,9 @@
 		<link rel="stylesheet" href="css/custom.css" />
 		<!-- Compiled and minified CSS -->
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+ <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
- 
+
 
 		<script src="js/init.js"></script>
 
@@ -18,19 +18,19 @@
 		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	</head>
 	<body>
-	
+
 		<script>
-        
+
 			$('#yourElement').addClass('animated bounceOutLeft');
 		</script>
-	
+
 		<div class = "front-page ">
 			<div class = "container ">
 				<div class = "login-container" id="placeholder">
 					<div id="login-container" class="main-container">
 						<div id="main">
 							<h1 class = "title animated fadeIn">edu<span style = "font-weight: 600;">New</span></h1>
-														
+
 						      <ul class="collapsible transparent" data-collapsible="accordion">
 						         <li class = "transparent">
 						            <div class="collapsible-header active" >Login</div>
@@ -40,8 +40,8 @@
 										<input type="password" placeholder="Password" class="login animated fadeIn" style = "animation-delay: .6s;" id="password">
 										<span id="error"></span>
 										<input  class = "btn-large z-depth-0 animated fadeIn"  style = "animation-delay: .5s;"type="submit" value="Log In" id="login-submit" onclick="logIn()">
-										
-									            	
+
+
 						            	</div>
 						         </li>
 						         <li>
@@ -49,19 +49,20 @@
 						            <div class="collapsible-body">
 						            	<input type="text" placeholder="Email" class="login animated fadeIn" style = "animation-delay: .7s;"id="reg_email"><br>
 						            	<input type="text" placeholder="Username" class="login animated fadeIn" style = "animation-delay: .7s;"id="reg_name"><br>
-										<input type="password" placeholder="Password" class="login animated fadeIn" style = "animation-delay: .6s;" id="reg_pass">
-										<input type="text" placeholder="Status(Teacher/Student)" class="login animated fadeIn" style = "animation-delay: .7s;"id="reg_ts"><br>
-										<span id="error"></span>
-										<script>
-											
-										</script>
+													<input type="password" placeholder="Password" class="login animated fadeIn" style = "animation-delay: .6s;" id="reg_pass">
+													<input type="text" placeholder="Gender" class="login animated fadeIn" style = "animation-delay: .7s;"id="reg_gender"><br>
+													<input type="text" placeholder="Birth Date" class="login animated fadeIn" style = "animation-delay: .7s;"id="reg_bDate"><br>
+													<input type="text" placeholder="Status(Teacher/Student)" class="login animated fadeIn" style = "animation-delay: .7s;"id="reg_ts"><br>
+													<input type="text" placeholder="pNumber" class="login animated fadeIn" style = "animation-delay: .7s;"id="reg_pNumber"><br>
+													<span id="error"></span>
+
 										<input  class = "btn-large z-depth-0 animated fadeIn"  style = "animation-delay: .5s;"type="submit" value="Log In" id="login-submit" onclick="register()">
-						            	
+
 						            </div>
 						         </li>
-						
+
 						      </ul>
-							
+
 						</div>
 						</div>
 					</div>
@@ -74,7 +75,7 @@
     onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
     onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
   });
-		
+
 	</script>
 	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
 <script>
@@ -88,7 +89,7 @@
     messagingSenderId: "354757121207"
   };
   firebase.initializeApp(config);
-	
+
 
 
 

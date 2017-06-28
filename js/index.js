@@ -1,8 +1,23 @@
 var check = false;
+var switchc = false;
 firebase.auth().onAuthStateChanged(function(user) {
-	if(check)writeUserData(firebase.auth().currentUser.uid, document.getElementById("reg_name").value, document.getElementById("reg_email").value, document.getElementById("reg_ts").value);
-	if (user) window.location.replace("dashboard.html");
-	
+	if(check){
+		console.log("check");
+		writeUserData(firebase.auth().currentUser.uid, document.getElementById("reg_name").value, document.getElementById("reg_email").value, document.getElementById("reg_ts").value, document.getElementById("reg_gender").value, document.getElementById("reg_bDate").value, document.getElementById("reg_pNumber").value).then(function(){
+			window.location.replace("dashboard.html")
+		});
+	}
+	if (switchc) {
+		if(user) {
+				window.location.replace("dashboard.html");
+		}
+
+	}
+
+
+
+
+
 });
 // $(document).ready(function() {
 // 	$("#username").on('keyup', function(e) {
@@ -30,19 +45,23 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 var register = function() {
-	
+	check = true;
+
 	let username = document.getElementById("reg_email"), password = document.getElementById("reg_pass");
 	firebase.auth().createUserWithEmailAndPassword(username.value, password.value)
 	 .catch(function (err) {
 	   // Handle errors
+		 console.log(err);
 	 });
-	 check = true;
 
-	 
-	
+  	 console.log("sucess");
+
+
+
 }
 
 var logIn = function() {
+	switchc = true;
 	// alert("f");
 	let username = document.getElementById("username"), password = document.getElementById("password");
 	// alert(username.val);
@@ -68,15 +87,21 @@ var logIn = function() {
 				break;
 		}
 		document.getElementById("error").innerHTML = content;
+
 	});
-	
+
+
+
 }
 
-function writeUserData(userId, name, email, ts) {
-  firebase.database().ref('users/' + userId).set({
+function writeUserData(userId, name, email, ts, gender, bDate, pNumber) {
+	  return firebase.database().ref('users/' + userId).set({
     username: name,
     email: email,
-    status: ts
+    status: ts,
+		gender: gender,
+		birthdate: bDate,
+		phonenumber: pNumber
   });
-  console.log("sucess");
+
 }
