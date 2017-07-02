@@ -1,5 +1,12 @@
 
 var data, notificationInited = false;
+var g_gender;
+var g_birthdate;
+var g_joined;
+var g_phonenumber;
+var g_status;
+var g_username;
+
 if (("Notification" in window) && Notification.permission != 'granted') {
 	Notification.requestPermission();
 }
@@ -14,23 +21,51 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     firebase.database().ref("users/"  + toFirebaseFormat(firebase.auth().currentUser.uid) + "/gender").once("value").then(function(gender) {
       document.getElementById("profile_gender").placeholder = " " + gender.val();
+			g_gender = gender.val();
     });
 
     firebase.database().ref("users/"  + toFirebaseFormat(firebase.auth().currentUser.uid) + "/birthdate").once("value").then(function(birthdate) {
       document.getElementById("profile_dBirth").placeholder = " " + birthdate.val();
+			g_birthdate = birthdate.val();
     });
 
     firebase.database().ref("users/"  + toFirebaseFormat(firebase.auth().currentUser.uid) + "/dateJoined").once("value").then(function(joined) {
       document.getElementById("profile_dJoined").placeholder = " " + joined.val();
+			g_joined = joined.val();
     });
 
 		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/phonenumber").once("value").then(function(phonenumber) {
 			document.getElementById("profile_pNumber").placeholder = phonenumber.val();
+			g_phonenumber = phonenumber.val();
+		});
+
+		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/status").once("value").then(function(status) {
+			g_status = status.val();
+
+		});;
+
+		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/username").once("value").then(function(username) {
+			g_username = username.val();
 		});
 
 
 		document.getElementById("user_email").innerHTML += " " + firebase.auth().currentUser.email;
     document.getElementById("profile_email").placeholder = " " + firebase.auth().currentUser.email;
+
+		//addClass tab added if teacher
+
+		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/status").once("value").then(function(status) {
+
+			//teacher button function start
+			console.log(status.val());
+			if (status.val() == "teacher"){
+				console.log("hi");
+				document.getElementById("addClass").innerHTML += "<a class = \"white-text\" href=\"#!\">" + "Add a Class"  + "</a>"
+			}
+		});;
+
+
+		//end of addClass
 
 
 
@@ -46,48 +81,50 @@ function pushInfo() {
 	var gender;
 	var pNumber;
 	var email;
-	if(document.getElementById("profile_dJoined") != null){
-		dJoined = document.getElementById("profile_dJoined");
+	var status = g_status;
+	var username = g_username;
+	if(document.getElementById("profile_dJoined").value != ""){
+		dJoined = document.getElementById("profile_dJoined").value;
+		console.log("changed");
 
 	}else {
-		firebase.database().ref("users/"  + toFirebaseFormat(firebase.auth().currentUser.uid) + "/dateJoined").once("value").then(function(joined) {
-      dJoined = joined.val();
-    });
+		dJoined = g_joined;
 	}
-	if(document.getElementById("profile_dBirth") != null){
-		dBirth = document.getElementById("profile_dBirth");
+	if(document.getElementById("profile_dBirth").value != ""){
+		dBirth = document.getElementById("profile_dBirth").value;
 
 	}else {
-		firebase.database().ref("users/"  + toFirebaseFormat(firebase.auth().currentUser.uid) + "/birthdate").once("value").then(function(birthdate) {
-			dBirth = birthdate.val();
-		});
+		dBirth = g_birthdate;
 	}
 
-	if(document.getElementById("profile_pNumber") != null){
-		pNumber = document.getElementById("profile_pNumber");
+	if(document.getElementById("profile_pNumber").value != ""){
+		pNumber = document.getElementById("profile_pNumber").value;
 
 	}else {
-		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/phonenumber").once("value").then(function(phonenumber) {
-			pNumber =  phonenumber.val();
-		});
+		pNumber = g_phonenumber;
 	}
-	if(document.getElementById("profile_gender") != null){
-		gender = document.getElementById("profile_gender");
+	if(document.getElementById("profile_gender").value != ""){
+		gender = document.getElementById("profile_gender").value;
 
 	}else {
-		firebase.database().ref("users/"  + toFirebaseFormat(firebase.auth().currentUser.uid) + "/gender").once("value").then(function(gender) {
-      gender = gender.val();
-    });
+		gender = g_gender;
 	}
-	writeUserData(firebase.auth().currentUser.uid, dJoined, dBirth, gender, pNumber);
+
+	console.log(document.getElementById("profile_gender").value);
+	console.log(dJoined + " " + dBirth + " " + gender + " " + pNumber);
+	writeUserData(firebase.auth().currentUser.uid, dJoined, dBirth, gender, pNumber, username, status);
 }
 
-function writeUserData(userId, dJoined, dBirth, gender, pNumber) {
-  firebase.database().ref('users/' + userId).push({
+
+function writeUserData(userId, dJoined, dBirth, gender, pNumber, username, status) {
+	console.log(userId + " " + dJoined + " " + dBirth + " " + gender + " " + pNumber);
+  firebase.database().ref('users/' + userId).set({
     dateJoined: dJoined,
     phonenumber: pNumber,
 		gender: gender,
-		birthdate: dBirth
+		birthdate: dBirth,
+		username: username,
+		status: status
   });
   console.log("sucess");
 }

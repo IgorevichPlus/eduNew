@@ -1,19 +1,38 @@
 
 var data, notificationInited = false;
+
+
 if (("Notification" in window) && Notification.permission != 'granted') {
 	Notification.requestPermission();
 }
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
 
+		//instance variable printer
 		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/username").once("value").then(function(ds) {
 			document.getElementById("signout").innerHTML += " " + ds.val();
 			document.getElementById("user_name").innerHTML += " " + ds.val();
 		});
 
+		//addClass tab added if teacher
+
+		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/status").once("value").then(function(status) {
+
+			//teacher button function start
+			console.log(status.val());
+			if (status.val() == "teacher"){
+				console.log("hi");
+				document.getElementById("addClass").innerHTML += "<a class = \"white-text\" href=\"add_class.html\">" + "Add a Class"  + "</a>"
+			}
+		});;
+
+
+		//end of addClass
+
+
+		//class printing function
 
 		firebase.database().ref("users/" + toFirebaseFormat(firebase.auth().currentUser.uid) + "/classes" +"/registered").once("value").then(function(rg) {
-
 			rg.val().forEach(function(x){
 				var users;
 				var dess;
@@ -36,7 +55,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 				});
 		});
 
+		//end of class printing function
+
 		//teachers
+
 		firebase.database().ref("users/").once("value").then(function(uc){
 			k = uc.val();
 			console.log(uc.val());
@@ -48,7 +70,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 			}
 		});
 
+		//end of teachers printing function
+
+
+
 		//All classes
+
 		firebase.database().ref("classes/").once("value").then(function(nm){
 			nm.val().forEach(function(x){
 				firebase.database().ref("classes/" + x).once("value").then(function(nn){
@@ -56,6 +83,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 				});
 			});
 		});
+
+		//end of all classes
+
+
+
+
+
 
 
 

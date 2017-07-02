@@ -95,13 +95,34 @@ var logIn = function() {
 }
 
 function writeUserData(userId, name, email, ts, gender, bDate, pNumber) {
+	 	var joined = currentDate();
 	  return firebase.database().ref('users/' + userId).set({
     username: name,
     email: email,
     status: ts,
 		gender: gender,
 		birthdate: bDate,
-		phonenumber: pNumber
+		phonenumber: pNumber,
+		dateJoined: joined
   });
 
+
+}
+
+function currentDate() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+	    dd = '0'+dd;
+	}
+
+	if(mm<10) {
+	    mm = '0'+mm;
+	}
+
+	today = mm + '/' + dd + '/' + yyyy;
+	return today;
 }
