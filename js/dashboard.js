@@ -55,6 +55,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 				});
 		});
 
+		writedatatest();
 		//end of class printing function
 
 		//teachers
@@ -120,4 +121,13 @@ var printAllClasses = function(title, description, teacher){
 	document.getElementById("classlist").innerHTML += teacher;
 	document.getElementById("classlist").innerHTML += description;
 
+
+}
+
+var writedatatest = function(){
+	firebase.database().ref('classes/').push({
+    username: "name",
+    email: "email"
+  	});
+		console.log("sucess");
 }

@@ -26,6 +26,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 			}
 		});;
 
+		firebase.database().ref("classes/").once("value").then(function(uc){
+			C = uc.val();
+			console.log(uc.val());
+			for(let key in C){
+				console.log(C[key]);
+
+			}
+		});
+
 
 		//end of addClass
 
